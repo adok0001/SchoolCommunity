@@ -1,0 +1,39 @@
+﻿@model assignment2.Models.ViewModels.AdsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id=@Model.Community.Id>Upload</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               FileName
+            </th>
+            <th>
+                Image
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Advertisements) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                <img src=@item.Url style="max-width: 400px;" />
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
